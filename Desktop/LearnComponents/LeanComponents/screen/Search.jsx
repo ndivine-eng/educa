@@ -3,43 +3,35 @@ import { View, Text, Image, StyleSheet, label, money } from 'react-native';
 
 export default function Search({ title, image, price, text, picture, drip,label , money }) {
   return (
-    <View>
+    
       <View style={styles.clothes}>
-        <Text style={{ fontSize: 20 }}>{title}</Text>
+        <Text style={{ fontSize: 15 , }}>{title}</Text>
         <Image source={{ uri: `${image}` }} style={styles.img} />
-        <View style={{ display: 'flex', flexDirection: 'row', backgroundColor:'#6b6b69',width:200, justifyContent: 'space-between' }}>
-          <Text>{price}</Text>
+        <View style={{ display: 'flex', flexDirection: 'row', backgroundColor:'rgba(0, 0, 0, 0.5)',width:'90%', justifyContent: 'space-between', position:'absolute', bottom:0, left:0, height:'25%', borderBottomEndRadius:20, borderBottomStartRadius:20}}>
+          <Text style={{color:'white'}}>{price}</Text>
           <Text>{text}</Text>
         </View>
       </View>
 
-      <View style={styles.container}>
-        <View>
-          <Image source={{ uri: `${picture}` }} style={styles.img} />
-          <Image source={{ uri: `${drip}` }} style={styles.img} />
-          <View style={{ display: 'flex', flexDirection: 'column',width:200, gap: 10 }}>
-            <Text>{label}</Text>
-            <Text>{money}</Text>
-          </View>
-         
-        </View>
-      </View>
-    </View>
+      
+   
   );
 }
 
 const styles = StyleSheet.create({
   clothes: {
-    justifyContent: 'center',
-    alignItems: 'center',
+    width:200,
+    height:150,
+    position: 'relative',
+  
+  
+  
   },
-  container: {
-    justifyContent: 'center',
-    alignItems: 'center',
-      
-  },
+ 
   img: {
-    width: 200, 
-    height: 150,
+    width: '90%', 
+    height: '100%',
+    borderRadius: 20,
+  
   },
 });

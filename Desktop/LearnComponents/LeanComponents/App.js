@@ -5,6 +5,7 @@ import Search from './screen/Search';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Card from './screen/Card';
 
 export default function App() {
   const data = [
@@ -37,22 +38,24 @@ export default function App() {
       image: 'https://tse1.mm.bing.net/th?id=OIP.Dw11c8nn6mEhoYV8xvdWGwHaE7&pid=Api&P=0&h=220',
       text: 'Gj Jean',
       price: '$46.00',
-    },
-    {
-      Picture: 'https://tse3.mm.bing.net/th?id=OIP.joIlkTfrrg3M86s4A-gPdgHaJ4&pid=Api&P=0&h=220',
+     },
+  ];
+const clothes= [
+  {
+      picture: 'https://tse2.mm.bing.net/th?id=OIP.AEvQklzT63Y4gBMTkvuaCAHaF_&pid=Api&P=0&h=220',
       label: 'white t-shirt',
       money: '$46.00',
     },
     {
-      drip: 'https://tse2.mm.bing.net/th?id=OIP.StVd7xyn99MUuhg4-7ttwwHaK2&pid=Api&P=0&h=220',
+      picture: 'https://tse2.mm.bing.net/th?id=OIP.StVd7xyn99MUuhg4-7ttwwHaK2&pid=Api&P=0&h=220',
       label: 'Blue t-shirt',
       money: '$46.00',
     }
-  ];
-
+]
 
   return (
     <View style={styles.container}>
+      <ScrollView>
       <StatusBar style="auto" />
       <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
         <AntDesign name="arrowleft" size={24} color="black" style={{ borderWidth: 1, borderColor: '#cccccc', borderRadius: 80, padding: 10, backgroundColor: '#f0f0f0', marginLeft: 20 }} />
@@ -61,7 +64,7 @@ export default function App() {
       </View>
       <View style={{ flexDirection: 'row', width: 350, borderWidth: 1, borderColor: '#cccccc', borderRadius: 80, padding: 10, backgroundColor: '#f0f0f0', marginLeft: 20, marginTop: 10 }}>
         <AntDesign name="search1" size={24} color="black" />
-        <TextInput placeholder='Search' style={{ flex: 1, marginLeft: 10 }} />
+        <TextInput placeholder='Search...' style={{ flex: 1, marginLeft: 10 }} />
         <MaterialCommunityIcons name="tune-variant" size={24} color="black" />
       </View>
       <View>
@@ -75,25 +78,27 @@ export default function App() {
         </ScrollView>
       </View>
 
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 20, paddingLeft: 20 }}>
+      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={{ marginTop: 20, gap:10 }}>
         {data.map((item, index) => (
-          <View style={{ margin: 3, width: 200, backgroundColor: '#f0f0f0', borderRadius: 10,height:200 }} key={index}>
+          <View style={{ margin: 3, width: 200, backgroundColor: 'white', borderRadius: 10,height:200 }} key={index}>
             <Search title={item.title} image={item.image} text={item.text} price={item.price} />
           </View>
         ))}
       </ScrollView>
 
-      <Text style={{ fontSize: 25, fontWeight: 'bold', marginLeft: 20, marginTop: 20, }}>
+      <Text style={{ fontSize: 20, fontWeight: 'bold', marginLeft: 20, marginTop: 20, }}>
         Product result (45)
       </Text>
-      <View style={{ marginTop: 20, paddingLeft: 20 }}>
-        {data.map((item, index) => (
-          <View style={{ margin: 3, width: 200, backgroundColor: '#f0f0f0', borderRadius: 10,height:200 }} key={index}>
-            <Search  picture={item.Picture} drip={item.drip} label={item.label} money={item.money}/>
+      <View style={{ marginTop: 20, paddingLeft: 3, display: 'flex', flexDirection: 'row', flexWrap: 'wrap', }}>
+        {clothes.map((item, index) => (
+          <View style={{ margin: 3, width: 200, backgroundColor: '#f0f0f0', borderRadius: 10,height:200,flexWrap:'wrap' }} key={index}>
+            <Card  picture={item.picture} label={item.label} money={item.money}/>
+            <Card  picture={item.picture} label={item.label} money={item.money}/>
 
           </View>
         ))}
       </View>
+      </ScrollView>
     </View>
   );
 }
